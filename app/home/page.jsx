@@ -16,12 +16,11 @@ import Image from "next/image";
 import ProjectsSection from '@/components/projectSection'
 import Test from '@/components/Test'
 // import Testimonials from '@/components/Testimonials'
-
 import { ArrowUpLeft } from 'lucide-react';
-
 import DraggableCircleGrid from "@/components/draggableCircles";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
+
 
 const page=()=> {
   const nameRef = useRef(null);

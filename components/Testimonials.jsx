@@ -40,13 +40,13 @@ const Testimonials = () => {
     );
 
     // Detect scroll attempt (even if no overflow)
-    const handleScroll = () => {
-      gsap.to("body", {
-        opacity: 0,
-        duration: 1,
-        onComplete: () => router.push("/about"),
-      });
-    };
+    gsap.to("body", {
+      opacity: 0,
+      duration: 1,
+      onComplete: () => {
+        router.push("/about")
+      },
+    });
 
     window.addEventListener("wheel", handleScroll);
     window.addEventListener("touchmove", handleScroll);

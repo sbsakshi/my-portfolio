@@ -64,7 +64,6 @@ const projects = [
 ]
 
 export default function ProjectsSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
   const [activeProject, setActiveProject] = useState(0)
 
   useEffect(() => {
