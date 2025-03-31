@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -18,4 +23,150 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+ 
+}
+/* Shiny Glowing Border Effect */
+.shiny-border {
+  --offset: 4px; /* Adjust border thickness */
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for exact center */
+  border-radius: 50px;
+  overflow: hidden;
+  background: black; /* Background color of the button */
+  width: 20%; /* Adjust width as needed */
+  height: 80px; /* Adjust height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shiny-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: var(--offset);
+  background: linear-gradient(
+    45deg,
+    #7e13ea, /* Purple */
+    #ac22ac, /* Pink */
+    #290649 /* Purple */
+  );
+  border-radius: inherit;
+  -webkit-mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
+  mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: glow 2s linear infinite;
+  filter: blur(5px); /* Add blur for a glowing effect */
+}
+
+/* Shiny Reflection Effect */
+.shiny-border::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1), /* Reduced opacity */
+    rgba(255, 255, 255, 0.2), /* Reduced opacity */
+    rgba(255, 255, 255, 0.1)  /* Reduced opacity */
+  );
+  transform: rotate(45deg);
+  animation: shine 3s linear infinite;
+  opacity: 0.7; /* Reduced opacity */
+}
+
+/* Keyframes for Glowing Animation */
+
+
+/* Keyframes for Shiny Reflection Animation */
+@keyframes shine {
+  0% {
+    transform: rotate(45deg) translateX(-100%);
+  }
+  100% {
+    transform: rotate(45deg) translateX(100%);
+  }
+}
+/* styles.css */
+
+svg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+line {
+  stroke: cyan;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.anton-regular {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl; /* Vertical right-to-left */
+  text-orientation: upright; /* Keeps letters upright */
+  font-size: 100px;
+  font-weight: bold;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.mask-clip-path {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+@font-face {
+  font-family: 'MomFont';
+  src: url('/fonts/Mom.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TypewriterFont';
+  src: url('/fonts/Typewriter.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'calcio';
+  src: url('/fonts/calcio.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'signature';
+  src: url('/fonts/signature1.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.project-card {
+  position: relative;
+  padding-top: 10vh;
+  padding-bottom: 20vh;
+  min-height: 100vh;
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
 }
