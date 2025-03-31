@@ -23,7 +23,7 @@ import DraggableCircleGrid from "@/components/draggableCircles";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 
-export default function Home() {
+const page=()=> {
   const nameRef = useRef(null);
   const paragraphRef = useRef(null);
   const containerRef = useRef(null);
@@ -190,3 +190,5 @@ export default function Home() {
     </>
   );
 }
+
+export default page;
