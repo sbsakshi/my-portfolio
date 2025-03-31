@@ -1,20 +1,21 @@
-"use client";
+"use client"
 
-import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
-import { gsap } from "gsap";
-import ElasticGrid from "./Grid";
+import { useState, useEffect, useRef } from "react"
+import { useRouter } from "next/navigation"
+import { gsap } from "gsap"
+import ElasticGrid from "./Grid"
 
 const Testimonials = () => {
-  const testimonials = ["crazy", "awesome", "right fit", "ambitious"];
-  const people = ["adam(director)", "joe(professor)", "jane(mentor)", "jane(mentor)"];
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const textRef = useRef(null);
-  const router = useRouter();
+  const testimonials = ["crazy", "awesome", "right fit", "ambitious"]
+  const people = ["adam(director)", "joe(professor)", "jane(mentor)", "jane(mentor)"]
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const textRef = useRef(null)
+  const router = useRouter()
+  const isNavigating = useRef(false)
 
   useEffect(() => {
     // Animation timeline
-    const tl = gsap.timeline();
+    const tl = gsap.timeline()
     const interval = setInterval(() => {
       tl.to(textRef.current, {
         duration: 1,
@@ -22,41 +23,40 @@ const Testimonials = () => {
         y: 20,
         ease: "power2.out",
         onComplete: () => {
-          setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length)
 
-          gsap.fromTo(
-            textRef.current,
-            { opacity: 0, y: -20 },
-            { duration: 0.5, opacity: 1, y: 0, ease: "power2.out" }
-          );
+          gsap.fromTo(textRef.current, { opacity: 0, y: -20 }, { duration: 0.5, opacity: 1, y: 0, ease: "power2.out" })
         },
-      });
-    }, 3000);
+      })
+    }, 3000)
 
-    gsap.fromTo(
-      textRef.current,
-      { opacity: 0, y: -20 },
-      { duration: 0.5, opacity: 1, y: 0, ease: "power2.out" }
-    );
+    gsap.fromTo(textRef.current, { opacity: 0, y: -20 }, { duration: 0.5, opacity: 1, y: 0, ease: "power2.out" })
 
     // Detect scroll attempt (even if no overflow)
-    gsap.to("body", {
-      opacity: 0,
-      duration: 1,
-      onComplete: () => {
-        router.push("/about")
-      },
-    });
+    const handleScroll = () => {
+      // Prevent multiple navigation attempts
+      if (isNavigating.current) return
+      isNavigating.current = true
 
-    window.addEventListener("wheel", handleScroll);
-    window.addEventListener("touchmove", handleScroll);
+      // Animate out and then navigate
+      gsap.to("body", {
+        opacity: 0,
+        duration: 1,
+        onComplete: () => {
+           window.location.href = "/about"
+        },
+      })
+    }
+
+    window.addEventListener("wheel", handleScroll)
+    window.addEventListener("touchmove", handleScroll)
 
     return () => {
-      clearInterval(interval);
-      window.removeEventListener("wheel", handleScroll);
-      window.removeEventListener("touchmove", handleScroll);
-    };
-  }, [testimonials.length, router]);
+      clearInterval(interval)
+      window.removeEventListener("wheel", handleScroll)
+      window.removeEventListener("touchmove", handleScroll)
+    }
+  }, [testimonials.length, router])
 
   return (
     <div className="relative w-screen h-screen overflow-hidden">
@@ -75,7 +75,8 @@ const Testimonials = () => {
         <span className="text-[200px] right-1/4"> )</span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Testimonials;
+export default Testimonials
+
