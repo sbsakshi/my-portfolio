@@ -12,8 +12,14 @@ const Testimonials = () => {
   const textRef = useRef(null)
   const router = useRouter()
   const isNavigating = useRef(false)
+  const [canNavigate, setCanNavigate] = useState(false)
 
   useEffect(() => {
+    // Enable navigation after 10 seconds
+    const navigationTimer = setTimeout(() => {
+      setCanNavigate(true)
+    }, 10000)
+
     // Animation timeline
     const tl = gsap.timeline()
     const interval = setInterval(() => {
@@ -32,18 +38,16 @@ const Testimonials = () => {
 
     gsap.fromTo(textRef.current, { opacity: 0, y: -20 }, { duration: 0.5, opacity: 1, y: 0, ease: "power2.out" })
 
-    // Detect scroll attempt (even if no overflow)
+    // Detect scroll attempt (only after 10s)
     const handleScroll = () => {
-      // Prevent multiple navigation attempts
-      if (isNavigating.current) return
+      if (!canNavigate || isNavigating.current) return
       isNavigating.current = true
 
-      // Animate out and then navigate
       gsap.to("body", {
         opacity: 0,
         duration: 1,
         onComplete: () => {
-           window.location.href = "/about"
+          window.location.href = "/about"
         },
       })
     }
@@ -52,11 +56,12 @@ const Testimonials = () => {
     window.addEventListener("touchmove", handleScroll)
 
     return () => {
+      clearTimeout(navigationTimer)
       clearInterval(interval)
       window.removeEventListener("wheel", handleScroll)
       window.removeEventListener("touchmove", handleScroll)
     }
-  }, [testimonials.length, router])
+  }, [testimonials.length, canNavigate])
 
   return (
     <div className="relative w-screen h-screen overflow-hidden">
@@ -79,4 +84,3 @@ const Testimonials = () => {
 }
 
 export default Testimonials
-

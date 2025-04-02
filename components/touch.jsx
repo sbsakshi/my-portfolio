@@ -34,10 +34,7 @@ export default function GetInTouch() {
 
   return (
     <div ref={containerRef} className="min-h-screen w-full flex flex-col bg-[#fffdea] p-6 relative">
-      {/* Top Sections */}
-
-
-      {/* Main Content */}
+    
       <div className="flex-1 flex items-center justify-between px-8 md:px-16">
         <div ref={getInRef} className="text-black text-5xl md:text-7xl font-light">
           GET IN
@@ -47,14 +44,12 @@ export default function GetInTouch() {
         </div>
       </div>
 
-      {/* Star/Asterisk */}
       <div ref={starRef} className="absolute bottom-32 right-8 text-black text-5xl">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M20 0V40M0 20H40M5.86 5.86L34.14 34.14M34.14 5.86L5.86 34.14" stroke="black" strokeWidth="2" />
         </svg>
       </div>
 
-      {/* Footer */}
       <footer ref={footerRef} className="w-full py-8 mt-auto border-t border-black/10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="text-black text-xs">
