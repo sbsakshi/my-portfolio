@@ -190,7 +190,7 @@ const page=()=> {
             className="cursor-hover"
           >
             <Image
-              src="/assets/instagram.png"
+              src="/assets/Instagram.png"
               alt="logo"
               height={200}
               width={20}
