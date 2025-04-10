@@ -12,7 +12,7 @@ const anton = Anton({ weight: "400", subsets: ["latin"], display: "swap" });
 
 
 const Interest = () => {
-    let [index,setIndex]=useState(0);
+    let [index,setIndex]=useState(-1);
     const topicRefs=useRef([]);
 
  

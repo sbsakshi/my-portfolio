@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Script from "next/script";
+
 // import Cursor from "@/components/cursor"
 import Socials from "@/components/Socials";
 import Navbar from "@/components/Navbar";
@@ -18,24 +20,26 @@ import Test from '@/components/Test'
 // import Testimonials from '@/components/Testimonials'
 import { ArrowUpLeft } from 'lucide-react';
 import DraggableCircleGrid from "@/components/draggableCircles";
+import CircleGrid from "@/components/CircleGrid";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
+import Curtain from "@/components/last";
 
 
 const page=()=> {
   const nameRef = useRef(null);
-  const paragraphRef = useRef(null);
+  // const paragraphRef = useRef(null);
   const containerRef = useRef(null);
   const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
-    gsap.set([nameRef.current, paragraphRef.current], {
+    gsap.set([nameRef.current], {
       filter: "blur(5px)",
       opacity: 0.7,
     });
 
     const nameElement = nameRef.current;
-    const paragraphElement = paragraphRef.current;
+    // const paragraphElement = paragraphRef.current;
 
     const handleNameHover = () => {
       gsap.to(nameElement, {
@@ -46,49 +50,54 @@ const page=()=> {
       });
     };
 
-    const handleParagraphHover = () => {
-      gsap.to(paragraphElement, {
-        filter: "blur(0px)",
-        opacity: 1,
-        duration: 0.5,
-        ease: "power2.out",
-      });
-    };
+    // const handleParagraphHover = () => {
+    //   gsap.to(paragraphElement, {
+    //     filter: "blur(0px)",
+    //     opacity: 1,
+    //     duration: 0.5,
+    //     ease: "power2.out",
+    //   });
+    // };
 
     if (nameElement) {
       nameElement.addEventListener("mouseenter", handleNameHover);
     }
 
-    if (paragraphElement) {
-      paragraphElement.addEventListener("mouseenter", handleParagraphHover);
-    }
+    // if (paragraphElement) {
+    //   paragraphElement.addEventListener("mouseenter", handleParagraphHover);
+    // }
 
     return () => {
+  
+
       if (nameElement) {
         nameElement.removeEventListener("mouseenter", handleNameHover);
       }
-      if (paragraphElement) {
-        paragraphElement.removeEventListener(
-          "mouseenter",
-          handleParagraphHover
-        );
-      }
+      // if (paragraphElement) {
+      //   paragraphElement.removeEventListener(
+      //     "mouseenter",
+      //     handleParagraphHover
+      //   );
+      // }
     };
   }, []);
 
   return (
     <>
-      <div className=" flex flex-col justify-between relative bg-[#fffdea] text-black transition-all duration-300  h-dvh">
+        <Script
+  src="https://assets.calendly.com/assets/external/widget.js"
+  strategy="lazyOnload"
+/>
+      <div className=" flex flex-col justify-between relative bg-[#fffdea] text-black transition-all duration-300  h-dvh overflow-hidden">
+        <div className="z-50 top-0 right-0">
         <Navbar />
+        </div>
         <div className="top-0 right-0 absolute z-10  "> 
-        <DraggableCircleGrid/>
-        {/* <div className="inline-flex  items-center space-x-2 ">
-    <ArrowUpLeft className="w-6 h-6" stroke="black" />
-    <h2 className="italic">drag me if u can</h2>
-  </div> */}
-  <Image src="/assets/move.png" height={100} width={200} alt="text"/>
+        <CircleGrid/>
+  {/* <Image src="/assets/move.png" height={100} width={200} alt="text"/> */}
         </div>
         <div className="bottom-0 left-0 absolute z-10 translate-y-[80%] m-8"> 
+          
         <DraggableCircleGrid/>
         </div>
         <div
@@ -98,18 +107,41 @@ const page=()=> {
           <h1 className="font-bold">Hi, I'm </h1>
           <div ref={nameRef}>
             <h1 className="font-bold relative">SAKSHI BANSAL</h1>
+
             <RotatingTitles />
           </div>
+          <div>
+          {/* <div className="border border-black rounded-xl m-2 inline-block px-2 py-0"
+          > */}
+  <button
+ 
+ onClick={() => {
+  if (typeof window !== "undefined" && window.Calendly) {
+    window.Calendly.initPopupWidget({
+      url: "https://calendly.com/sakshi-sb2006/30min",
+    });
+  } else {
+    console.warn("Calendly not loaded yet.");
+  }
+}}
+    className="bg-black text-white text-lg px-5 py-2 rounded-3xl hover:bg-gray-800 transition-all m-2"
+  >
+    Connect with me
+  </button>
+{/* </div> */}
+          <Link href="#project">
+          <button  className="border border-black text-black text-lg px-5 py-2 rounded-3xl hover:bg-gray-100 transition-all" >check my work </button>
+          </Link>
+          </div>
         </div>
-       
         <div
-          ref={paragraphRef}
+          // ref={paragraphRef}
           className="absolute bottom-0 text-[18px] right-0 pl-24 pt-4 m-8 max-w-xl"
         >
           <p className="leading-relaxed">
-            "Enthusiastic about graphic design, typography, and the dynamic
+            Enthusiastic about graphic design, typography, and the dynamic
             areas of motion and web-based animations. Specialized in translating
-            brands into unique and immersive digital user experiences."
+            brands into unique and immersive digital user experiences.
           </p>
         </div>
 
@@ -160,32 +192,24 @@ const page=()=> {
             rel="noopener noreferrer"
             className="cursor-hover"
           >
-            {/* <Twitter size={20} /> */}
           </Link>
         </div>
         </div>
       </div>
-      {/* about page */}
       <div >
         <TiltedImage />
+        <div id="about">
         <AboutText />
+        </div>
         <div className="transform -translate-y-1/2">
           <BallCluster />
         </div>
-          <div>
+          <div id="project">
              <ProjectsSection/>
              </div>
-             {/* <div className="">
-             <Testimonials/> */}
              </div>
-             <div className="mb-24">
-             <Test/>
-             </div>
-        {/* <div className="">
-          <Interest />
-        </div>
-      </div>
-      <Footer/> */}
+             <Curtain/>
+      
     </>
   );
 }

@@ -40,11 +40,17 @@ export default function RootLayout({ children }) {
   />
 </Head>
 
+
       <body
         className={`${geistSans.variable} ${geistMono.variable}   xs:p-4`}
       >
         {children}
       </body>
+      <script
+  type="text/javascript"
+  src="https://assets.calendly.com/assets/external/widget.js"
+  async
+></script>
     </html>
   );
 }

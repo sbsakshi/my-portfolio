@@ -14,7 +14,7 @@ import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
-export default function CurtainReveal() {
+const Curtain=()=> {
   const sectionRef = useRef(null)
   const curtainsRef = useRef([])
 
@@ -86,7 +86,7 @@ export default function CurtainReveal() {
 
   return (
     <div className="relative">
-      <div className="h-screen bg-black" />
+      <div className="h-[80vh] bg-black" />
 
       <div ref={sectionRef} className="relative h-screen">
         {renderCurtains()}
@@ -105,3 +105,5 @@ export default function CurtainReveal() {
     </div>
   )
 }
+
+export default Curtain;

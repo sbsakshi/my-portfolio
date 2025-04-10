@@ -8,8 +8,8 @@ import Logo from "./Logo";
 const Navbar = () => {
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Projects", path: "/contact" },
+    { name: "About", path: "#about" },
+    { name: "Projects", path: "#project" },
   ];
 
   // Create an array of refs properly
@@ -63,7 +63,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="relative flex justify-between items-center w-full h-[80px]  px-4 text-black">
+    <div className="relative flex justify-between items-center w-full h-[80px]  px-4 text-black cursor-pointer">
       <Logo />
       <ul className="flex space-x-6 text-[18px] font-shoulders text-black">
         {navItems.map((item, index) => (
@@ -76,10 +76,10 @@ const Navbar = () => {
           >
             <Link href={item.path} className="block h-full">
               <div className="relative h-full overflow-hidden">
-                <span className="block text-center transition-colors duration-300  hover:text-purple-200 cursor-none">
+                <span className="block text-center transition-colors duration-300  hover:text-gray-600 cursor-none">
                   {item.name}
                 </span>
-                <span className="absolute top-0 left-0 w-full text-center opacity-0 transition-colors duration-300 hover:text-purple-200 cursor-none">
+                <span className="absolute top-0 left-0 w-full text-center opacity-0 transition-colors duration-300 hover:text-gray-600 cursor-none">
                   {item.name}
                 </span>
               </div>
