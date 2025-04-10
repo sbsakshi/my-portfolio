@@ -40,6 +40,7 @@ export default function ProjectCard({ project, isActive }) {
         <div className="mt-8">
           <div className={`text-sm text-gray-400 ${inter.className}`}>{project.category}</div>
           <h2 className={`${playfair.className} text-4xl md:text-5xl lg:text-6xl font-medium mt-2`}>{project.title}</h2>
+          <h4 className="text-red-500">comming soon!</h4>
 
           <p className={`mt-8 text-gray-300 text-lg leading-relaxed max-w-2xl ${inter.className}`}>
             {project.description}

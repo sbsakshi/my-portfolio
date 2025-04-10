@@ -5,6 +5,7 @@ import Script from "next/script";
 
 // import Cursor from "@/components/cursor"
 import Socials from "@/components/Socials";
+import Head from "next/head";
 import Navbar from "@/components/Navbar";
 import RotatingTitles from "@/components/rotating-titles";
 import ScrollIndicator from "@/components/ScrollIndicator";
@@ -84,8 +85,17 @@ const page=()=> {
 
   return (
     <>
+          <Head>
+        <link
+          href="https://assets.calendly.com/assets/external/widget.css"
+          rel="stylesheet"
+        />
+      </Head>
         <Script
   src="https://assets.calendly.com/assets/external/widget.js"
+  onLoad={() => {
+    console.log("Calendly script loaded!");
+  }}
   strategy="lazyOnload"
 />
       <div className=" flex flex-col justify-between relative bg-[#fffdea] text-black transition-all duration-300  h-dvh overflow-hidden">
