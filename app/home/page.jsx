@@ -3,8 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
 
-// import Cursor from "@/components/cursor"
-import Socials from "@/components/Socials";
+
 import Head from "next/head";
 import Navbar from "@/components/Navbar";
 import RotatingTitles from "@/components/rotating-titles";
@@ -18,7 +17,6 @@ import Interest from "@/components/Interest";
 import Image from "next/image";
 import ProjectsSection from '@/components/projectSection'
 import Test from '@/components/Test'
-// import Testimonials from '@/components/Testimonials'
 import { ArrowUpLeft } from 'lucide-react';
 import DraggableCircleGrid from "@/components/draggableCircles";
 import CircleGrid from "@/components/CircleGrid";

@@ -12,55 +12,46 @@ const playfair = Playfair_Display({ subsets: ["latin"] })
 const projects = [
   {
     id: "01",
-    title: 'Podcastr - AI Podcast Platform',
-    category: "AI & WEB DEVELOPMENT",
-    description:
-    'Podcastr is a revolutionary Software-as-a-Service platform that transforms the way podcasts are created. With advanced AI-powered features like text-to-multiple-voices functionality, it allows creators to generate diverse voiceovers from a single text input.',
-    year: "2024",
-    tags: ["DESIGN", "DEVELOPMENT","AI"],
+    title: 'Bookwise - Library Management System',
+      description: 'Bookwise is a comprehensive library management system that streamlines the process of managing books, users, and transactions. It offers a user-friendly interface for both librarians and patrons, making it easy to search for books, check availability, and manage borrowing and returning processes.',
+      subdesc:
+        'Built with Next.js 14, Tailwind CSS, TypeScript, and Convex, Bookwise is designed for optimal performance and scalability.',
+      href: 'https://github.com/sbsakshi/Bookwise',
+      tags: ["FULL STACK", "DESIGN"],
+
     videoSrc: "/textures/project/project1.mp4",
   },
   {
-    id: "02",
-    title: "LIVEDOC™",
-    category: "WEB DEVELOPMENT",
-    description:
-      'LiveDoc is a powerful collaborative app that elevates the capabilities of real-time document editing. As an enhanced version of Google Docs, It supports millions of collaborators simultaneously, ensuring that every change is captured instantly and accurately.',
-    year: "2024",
+    title: 'CascadingSpells - Game to learn CSS',
+      description: 'cascadingSpells is an interactive game designed to teach users the fundamentals of CSS in a fun and engaging way. Players can explore various levels, each focusing on different CSS concepts, and complete challenges to progress through the game.',
+      subdesc:
+        'With a focus on gamification, cascadingSpells makes learning CSS enjoyable and effective, by using Next.js, Tailwind CSS, TypeScript, and Framer Motion.',
+      href: 'https://cascadingspells.com/',
+      texture: '/textures/project/project2.mp4',
     tags: ["AI", "DESIGN"],
     videoSrc: "/textures/project/project2.mp4",
   },
   {
     id: "03",
-    title: 'CarePulse ',
-    category: "UI/UX Design",
-    description:
-     'An innovative healthcare platform designed to streamline essential medical processes. It simplifies patient registration, appointment scheduling, and medical record management, providing a seamless experience for both healthcare providers and patients.',
-    year: "2023",
+    title: 'Uterly-Women Health Platform',
+      description: 'Uterly is a women’s health platform that provides personalized health insights and resources. It offers a user-friendly interface for tracking menstrual cycles, ovulation, and overall reproductive health.',
+      subdesc:
+        'With a focus on user experience, Uterly integrates complex forms and SMS notifications, by using Next.js, Appwrite, Twillio and Sentry that enhance operational workflows.',
+      href: 'https://github.com/sbsakshi/Uterly',
     tags: ["UI/UX", "INTERACTION"],
     videoSrc: "/textures/project/project3.mp4",
   },
   {
     id: "04",
-    title: 'Horizon - Online Banking Platform',
-    category: "Software Development",
-    description:
-    'Horizon is a comprehensive online banking platform that offers users a centralized finance management dashboard. It allows users to connect multiple bank accounts, monitor real-time transactions, and seamlessly transfer money to other users.',
-    year: "2023",
+    title: 'Brainwave-Landing Page',
+      description: 'Brainwave is a cutting-edge landing page designed to showcase the capabilities of AI in generating high-quality content. It features a sleek and modern design, with a focus on user experience and engagement.',
+      subdesc:
+      'Built with Next.js 14, Tailwind CSS, TypeScript, and Framer Motion, Brainwave is optimized for performance and user interaction.',
+      href: 'https://github.com/sbsakshi/Brainwave',
     tags: ["CLOUD", "INFRASTRUCTURE"],
     videoSrc: "/textures/project/project4.mp4",
   },
-  {
-    id: "05",
-    title: "Imaginify ",
-    category: "AI",
-    description:
-    'An innovative healthcare platform designed to streamline essential medical processes. It simplifies patient registration, appointment scheduling, and medical record management, providing a seamless experience for both healthcare providers and patients.',
-    
-    year: "2022",
-    tags: ["AI", "HEALTHCARE"],
-    videoSrc: "/textures/project/project5.mp4",
-  },
+  
 ]
 
 export default function ProjectsSection() {
