@@ -20,7 +20,17 @@ const projects = [
       tags: ["FULL STACK", "DESIGN"],
 
     videoSrc: "/textures/project/project1.mp4",
-  },
+  },{
+  title: 'QuickStay - Smart Hotel Management System',
+  description: 'QuickStay is a modern hotel management web application that streamlines hotel operations and booking processes. It allows users to search and reserve rooms, while hotel staff can manage availability, guest details, and schedules efficiently.',
+  subdesc:
+    'Built with scalability and ease of use in mind, QuickStay leverages Next.js, Tailwind CSS, TypeScript, and PostgreSQL to provide a seamless and responsive experience for both guests and hotel administrators.',
+  href: 'https://hb-gs.vercel.app',
+  texture: '/textures/project/project5.mp4',
+  tags: ["WEB APP", "MANAGEMENT"],
+  videoSrc: "/textures/project/project5.mp4",
+},
+  
   {
     title: 'CascadingSpells - Game to learn CSS',
       description: 'cascadingSpells is an interactive game designed to teach users the fundamentals of CSS in a fun and engaging way. Players can explore various levels, each focusing on different CSS concepts, and complete challenges to progress through the game.',
