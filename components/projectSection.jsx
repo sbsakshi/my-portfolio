@@ -8,10 +8,27 @@ import { Playfair_Display } from "next/font/google"
 
 const playfair = Playfair_Display({ subsets: ["latin"] })
 
-// Define our project data
 const projects = [
   {
-    id: "01",
+     id: "01",
+  title: "Expensify Landing Page Redesign",
+  description: "A modern reimagining of Expensify’s landing page focused on clarity, modularity, and user-centric messaging. Designed as an unsolicited concept piece to explore better communication through UX.",
+  subdesc:
+    "This redesign introduces a toggle-based experience for personal and business users, updated visual hierarchy, and simplified copy. Built in Figma with attention to interaction patterns and conversion-focused structure.",
+  href: "https://www.figma.com/design/NwuF4Maxdic2PrF98mZ0dk/Expensify-revamp?node-id=0-1&p=f&t=nu6EPE1QndAlmuzQ-0", // Replace with actual Figma file if public
+  tags: ["UI/UX", "CASE STUDY", "CONCEPT"],
+  videoSrc: "/textures/project/Expensify.mp4",
+  },{
+  id: "02",
+  title: "morphAI - Next-Gen Web3 Wallet Concept",
+  description: "A concept landing page for a next-gen Web3 wallet with ai integeration, designed to demystify crypto for everyday users. Focused on clean UX, trust-building visuals, and simplified messaging for onboarding.",
+  subdesc:
+    "Built in Figma, this design combines bold gradients, glassmorphism, and smooth scroll interactions. Emphasizes wallet security, cross-chain support, and real-time token tracking—all presented through a modern narrative flow.",
+  href: "https://www.figma.com/design/RVM0jiVjFwON1bIgmpB1QE/MorphAI-landing?node-id=1-3&p=f&t=O1DA4aHu3Q9gdokq-0", // Replace with actual Figma file link
+  tags: ["UI/UX", "WEB3", "CONCEPT"],
+  videoSrc: "/textures/project/morphAi.mp4", // optional; remove if not needed
+},{
+  id: "03",
     title: 'Bookwise - Library Management System',
       description: 'Bookwise is a comprehensive library management system that streamlines the process of managing books, users, and transactions. It offers a user-friendly interface for both librarians and patrons, making it easy to search for books, check availability, and manage borrowing and returning processes.',
       subdesc:
@@ -20,18 +37,20 @@ const projects = [
       tags: ["FULL STACK", "DESIGN"],
 
     videoSrc: "/textures/project/project1.mp4",
-  },{
-  title: 'QuickStay - Smart Hotel Management System',
-  description: 'QuickStay is a modern hotel management web application that streamlines hotel operations and booking processes. It allows users to search and reserve rooms, while hotel staff can manage availability, guest details, and schedules efficiently.',
-  subdesc:
-    'Built with scalability and ease of use in mind, QuickStay leverages Next.js, Tailwind CSS, TypeScript, and PostgreSQL to provide a seamless and responsive experience for both guests and hotel administrators.',
-  href: 'https://hb-gs.vercel.app',
-  texture: '/textures/project/project5.mp4',
-  tags: ["WEB APP", "MANAGEMENT"],
-  videoSrc: "/textures/project/project5.mp4",
 },
-  
+{
+  id: "04",
+  title: "Biotech Tools Landing Page",
+  description: "A clean, modern landing page concept for a biotech software suite that helps researchers visualize, simulate, and analyze biological data with ease.",
+  subdesc:
+    "Designed in Figma to reflect scientific precision and approachability. The layout balances complex tool explanation with intuitive visuals—highlighting features like genome mapping, molecular modeling, and AI-driven insights.",
+  href: "https://www.figma.com/design/5CMTbwWlFIIjv2grR0WTYA/Scilico-Landing?node-id=24-2&t=nu6EPE1QndAlmuzQ-0", // Replace with actual Figma file link
+  tags: ["UI/UX", "SOFTWARE", "BIOTECH"],
+  videoSrc: "/textures/project/Silico.mp4", // optional; remove if not needed
+},
+
   {
+    id: "05",
     title: 'CascadingSpells - Game to learn CSS',
       description: 'cascadingSpells is an interactive game designed to teach users the fundamentals of CSS in a fun and engaging way. Players can explore various levels, each focusing on different CSS concepts, and complete challenges to progress through the game.',
       subdesc:
@@ -41,18 +60,9 @@ const projects = [
     tags: ["AI", "DESIGN"],
     videoSrc: "/textures/project/project2.mp4",
   },
+
   {
-    id: "03",
-    title: 'Uterly-Women Health Platform',
-      description: 'Uterly is a women’s health platform that provides personalized health insights and resources. It offers a user-friendly interface for tracking menstrual cycles, ovulation, and overall reproductive health.',
-      subdesc:
-        'With a focus on user experience, Uterly integrates complex forms and SMS notifications, by using Next.js, Appwrite, Twillio and Sentry that enhance operational workflows.',
-      href: 'https://github.com/sbsakshi/Uterly',
-    tags: ["UI/UX", "INTERACTION"],
-    videoSrc: "/textures/project/project3.mp4",
-  },
-  {
-    id: "04",
+    id: "06",
     title: 'Brainwave-Landing Page',
       description: 'Brainwave is a cutting-edge landing page designed to showcase the capabilities of AI in generating high-quality content. It features a sleek and modern design, with a focus on user experience and engagement.',
       subdesc:

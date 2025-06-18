@@ -26,9 +26,9 @@ const Interest = () => {
         "Next.js & React",  
         "Game-Inspired Interfaces", 
         "Web Accessibility",  
-        "netflix",
-        "cute shit",
-        "nonsense",
+        "Web3",
+        "Blockchain",
+        "Artificial Intelligence",
         "Dessert 🍰"
       ];
       

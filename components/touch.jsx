@@ -53,7 +53,7 @@ export default function GetInTouch() {
       <footer ref={footerRef} className="w-full py-8 mt-auto border-t border-black/10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="text-black text-xs">
-            <p>EMAIL: sakshi.sb2006@.COM • PHONE: +91 8168040827</p>
+            <p>EMAIL: sakshi.sb2006@.COM</p>
             <p className="mt-1">LOCATION: chennai,Tamil Nadu</p>
           </div>
           <div className="text-black text-xs opacity-70">
