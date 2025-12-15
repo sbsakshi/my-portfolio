@@ -27,9 +27,6 @@ const Interest = () => {
         "Game-Inspired Interfaces", 
         "Web Accessibility",  
         "Web3",
-        "Blockchain",
-        "Artificial Intelligence",
-        "Dessert 🍰"
       ];
       
       

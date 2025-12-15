@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { Playfair_Display, Inter } from "next/font/google"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 const playfair = Playfair_Display({ subsets: ["latin"] })
 const inter = Inter({ subsets: ["latin"] })
@@ -46,7 +47,8 @@ export default function ProjectCard({ project, isActive }) {
     >
       <div className="ml-auto w-full md:w-3/5 lg:w-1/2" ref={contentRef}>
         <div className="relative w-full aspect-video bg-gray-900 rounded-lg overflow-hidden mb-12">
-          <video ref={videoRef} className="w-full h-full object-cover" src={project.videoSrc} muted playsInline loop />
+          {/* <video ref={videoRef} className="w-full h-full object-cover" src={project.videoSrc} muted playsInline loop /> */}
+          <Image src={project.imgSrc} className="w-full h-full object-cover" fill={true} />
         </div>
 
         <div className="mt-8">
