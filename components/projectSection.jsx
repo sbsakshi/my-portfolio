@@ -16,7 +16,7 @@ const projects = [
     "A visually rich, scroll-driven cocktail website built to showcase smooth animations and immersive user interactions.",
   subdesc:
     "Implemented advanced GSAP animations including scroll-triggered effects, parallax scrolling, pinned sections, scroll-synced video playback, and custom animated carousels using React and Tailwind CSS.",
-  href: "https://github.com/sbsakshi/cocktails-landing",
+  href: "https://cocktails-landing-beta.vercel.app/",
   tags: ["GSAP", "Frontend", "Animations", "React"],
   imgSrc: "/textures/project/cocktails.png",
 },

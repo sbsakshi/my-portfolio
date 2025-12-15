@@ -8,80 +8,70 @@ import Game from "@/components/Game"
 export default function Home() {
   const router = useRouter()
 
+  // 1. Add mount state tracking
+  const [isMounted, setIsMounted] = useState(false)
+  
   const [count, setCount] = useState(0)
   const [loading, setLoading] = useState(true)
   const [resourcesLoaded, setResourcesLoaded] = useState(false)
 
+  // Types are fine here, as long as they aren't evaluated on the server
   const textRef = useRef(null)
   const boxRef = useRef(null)
   const boxRef2 = useRef(null)
   const text = useRef(null)
   const button = useRef(null)
+  const preloaderRef = useRef(null)
 
-  // Resource loading tracker
+  /* -----------------------------------------
+     ENSURE CLIENT-ONLY RENDERING
+  ------------------------------------------ */
   useEffect(() => {
-    let domReady = false
-    let fontsReady = false
-    let imagesReady = false
-    let scriptsReady = false
-
-    const checkIfAllLoaded = () => {
-      if (domReady && fontsReady && imagesReady && scriptsReady) {
-        setResourcesLoaded(true)
-      }
-    }
-
-    // DOM
-    if (document.readyState === "interactive" || document.readyState === "complete") {
-      domReady = true
-      checkIfAllLoaded()
-    } else {
-      window.addEventListener("DOMContentLoaded", () => {
-        domReady = true
-        checkIfAllLoaded()
-      })
-    }
-
-    // Fonts
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(() => {
-        fontsReady = true
-        checkIfAllLoaded()
-      })
-    } else {
-      setTimeout(() => {
-        fontsReady = true
-        checkIfAllLoaded()
-      }, 500)
-    }
-
-    // Images & scripts
-    window.addEventListener("load", () => {
-      imagesReady = true
-      scriptsReady = true
-      checkIfAllLoaded()
-    })
+    setIsMounted(true)
+    setCount(0)
+    setLoading(true)
+    setResourcesLoaded(false)
   }, [])
 
-  // Animate count to 100 smoothly
+  /* -----------------------------------------
+     SIMULATE / TRACK SCREEN LOADING
+  ------------------------------------------ */
   useEffect(() => {
-    if (resourcesLoaded) {
-      const timer = setInterval(() => {
-        setCount((prev) => {
-          if (prev >= 100) {
-            clearInterval(timer)
-            return 100
-          }
-          return prev + 1
-        })
-      }, 20)
-    }
-  }, [resourcesLoaded])
+    // Only run timeouts if mounted
+    if (!isMounted) return
 
-  // When count reaches 100, fade out preloader and show WELCOME
+    const timeout = setTimeout(() => {
+      setResourcesLoaded(true)
+    }, 800) 
+
+    return () => clearTimeout(timeout)
+  }, [isMounted])
+
+  /* -----------------------------------------
+     COUNT UP TO 100
+  ------------------------------------------ */
   useEffect(() => {
-    if (count === 100 && loading) {
-      gsap.to(".preloader", {
+    if (!resourcesLoaded || !isMounted) return
+
+    const timer = setInterval(() => {
+      setCount((prev) => {
+        if (prev >= 100) {
+          clearInterval(timer)
+          return 100
+        }
+        return prev + 1
+      })
+    }, 20)
+
+    return () => clearInterval(timer)
+  }, [resourcesLoaded, isMounted])
+
+  /* -----------------------------------------
+     FADE OUT PRELOADER
+  ------------------------------------------ */
+  useEffect(() => {
+    if (count === 100 && loading && preloaderRef.current) {
+      gsap.to(preloaderRef.current, {
         opacity: 0,
         duration: 1,
         onComplete: () => setLoading(false),
@@ -89,7 +79,9 @@ export default function Home() {
     }
   }, [count, loading])
 
-  // WELCOME animation and redirect
+  /* -----------------------------------------
+     WELCOME ANIMATION + REDIRECT
+  ------------------------------------------ */
   useEffect(() => {
     if (!loading && textRef.current && boxRef.current && text.current) {
       const marquee = textRef.current
@@ -124,7 +116,12 @@ export default function Home() {
         },
       })
     }
-  }, [loading])
+  }, [loading, router])
+
+  // 2. Prevent Server Side Rendering of the DOM structure
+  if (!isMounted) {
+    return null 
+  }
 
   return (
     <section className="bg-purple-100 w-full h-screen text-black font-extrabold whitespace-nowrap overflow-x-hidden relative">
@@ -132,18 +129,21 @@ export default function Home() {
 
       <div>
         <div
-          className="shiny-border z-10 absolute h-30 w-[20%] left-1/2 -translate-x-1/2 rounded-full text-white flex items-center justify-center flex-row shadow-[0_4px_10px_rgba(255,255,255,0.3)] hover:brightness-125 active:brightness-90 transition-all"
           ref={button}
+          className="shiny-border z-10 absolute h-30 w-[20%] left-1/2 -translate-x-1/2 rounded-full text-white flex items-center justify-center shadow-[0_4px_10px_rgba(255,255,255,0.3)]"
         >
           {loading ? (
-            <div className="preloader font-inconsolata absolute inset-0 flex items-center justify-center text-white font-bold transition-opacity duration-500 z-[99]">
-              <h1 className="p-4">Loading </h1>
+            <div
+              ref={preloaderRef}
+              className="font-inconsolata absolute inset-0 flex items-center justify-center text-white font-bold z-[99]"
+            >
+              <h1 className="p-4">Loading</h1>
               {count}%
               <div ref={boxRef2} className="bg-white w-2 h-4 ml-2" />
             </div>
           ) : (
             <>
-              <h1 className="p-2 font-4xl font-inconsolata font-bold" ref={text}>
+              <h1 ref={text} className="p-2 font-inconsolata text-2xl text-white font-bold">
                 WELCOME
               </h1>
               <div ref={boxRef} className="bg-white w-2 h-4" />
@@ -152,8 +152,12 @@ export default function Home() {
         </div>
       </div>
 
-      <h1 ref={textRef} className="absolute top-1/2 -translate-y-1/2 z-1 text-7xl font-bebas">
-        A CREATIVE DESIGNER DEVELOPER . A CREATIVE DESIGNER DEVELOPER . A CREATIVE DESIGNER DEVELOPER
+      <h1
+        ref={textRef}
+        className="absolute top-1/2 -translate-y-1/2 text-7xl font-bebas"
+      >
+        A CREATIVE DESIGNER DEVELOPER . A CREATIVE DESIGNER DEVELOPER . A CREATIVE
+        DESIGNER DEVELOPER
       </h1>
     </section>
   )
